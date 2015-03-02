@@ -8,6 +8,7 @@ public class test {
 		Dice dice3 = new Dice(6);
 		
 		Characters character = new Characters();
+		CharactersClass charclass = new CharactersClass("Dick", 2, 10, 16);
 		
 		int roll1 = dice1.roll();
 		int roll2 = dice2.roll();
@@ -19,7 +20,11 @@ public class test {
 		
 		System.out.println();
 		
-		System.out.print(character.randomCharacter());
+		System.out.println(character.randomCharacter());
+		
+		System.out.println(charclass.randomClass());
+		
+		
 		
 	}
 	
