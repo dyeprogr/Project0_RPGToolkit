@@ -7,8 +7,8 @@ public class test {
 		Dice dice2 = new Dice(6);
 		Dice dice3 = new Dice(6);
 		
-		Characters character = new Characters();
-		CharactersClass charclass = new CharactersClass("Dick", 2, 10, 16);
+		Character character = new Character();
+		Character charclass = new Character("Dick", 2, 10, 16);
 		
 		/* commented out to have cleaner console output
 		
@@ -36,7 +36,7 @@ public class test {
 		System.out.println(charclass.getHealthpoints());
 		System.out.println(charclass.getDexterity());
 		
-		gender = (characterindex <= (Characters.getLength()/2) -1) ? "male" : "female";
+		gender = (characterindex <= (Character.getLength()/2) -1) ? "male" : "female";
 		System.out.println(gender);
 		
 		//character.modifyStrength(2.0);  
