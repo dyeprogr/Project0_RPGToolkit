@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class test {
 	public static void main(String[] args) {
@@ -8,9 +7,8 @@ public class test {
 		Dice dice3 = new Dice(6);
 		
 		Character character = new Character();
-		Character charclass = new Character("Dick", 2, 10, 16);
 		
-		/* commented out to have cleaner console output
+		// commented out to have cleaner console output
 		
 		int roll1 = dice1.roll();
 		int roll2 = dice2.roll();
@@ -21,26 +19,49 @@ public class test {
 		System.out.printf("Rolled 3 dice - %s, %s and %s. Total sum of %s.",roll1,roll2,roll3,sum);
 		System.out.println();
 		System.out.println("---------------------------------------------");
-		*/
+		//*/
 		
 		//characters stuff
 		
 		int characterindex = character.randomIndexOfCharacter();
 		String gender = "";
-		
-		System.out.println(character.randomCharacter(characterindex));
-		
-		System.out.println(charclass.randomClass());
-		
-		System.out.println(charclass.getStrength());
-		System.out.println(charclass.getHealthpoints());
-		System.out.println(charclass.getDexterity());
+		int classindex = character.randomIndexforClass();
+		String charclass = character.randomClass(classindex);
 		
 		gender = (characterindex <= (Character.getLength()/2) -1) ? "male" : "female";
-		System.out.println(gender);
 		
-		//character.modifyStrength(2.0);  
+		System.out.println(character.randomCharacter(characterindex) + " - a " + gender + " " + charclass);
 		
+		//stats modified by gender and class
+		if (gender == "male"){
+			character.modifyStrength(1.2);
+			character.modifyHealth(1.5);
+			character.modifyDexterity(.8);
+		} else { 
+			character.modifyStrength(.8);
+			character.modifyDexterity(1.4);
+		}
+		
+		if (charclass == "warrior"){
+			character.modifyStrength(1.5);
+			character.modifyHealth(1.5);
+		} else if (charclass == "berserk"){
+			character.modifyStrength(2);
+		} else if (charclass == "rogue"){
+			character.modifyHealth(2);
+		} else if (charclass == "archer"){
+			character.modifyHealth(.7);
+			character.modifyStrength(.5);
+			character.modifyDexterity(2);
+		} else if (charclass == "druid"){
+			character.modifyHealth(4);
+			character.modifyStrength(.2);
+			character.modifyDexterity(.5);
+		}
+		  
+		System.out.println("Strength: \t" + character.getStrength());
+		System.out.println("Health: \t" + character.getHealthpoints());
+		System.out.println("Dexterity: \t" + character.getDexterity());
 	}
 	
 }

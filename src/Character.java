@@ -12,40 +12,29 @@ public class Character {
 	private double healthpoints;
 	private double dexterity;
 	
-	//Hashtable<Integer, String> characters = new Hashtable<Integer, String>();
-	
+	//first half of an array - male names, second half - female, it's ok to add more names as long as it's even
 	static String[] names = new String[] {"Arthur", "Edward", "Greg", "Wilhelm", "Kate", "Sophia", "Helga", "Mona"};
 	private String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
 	
 	public Character ()
 	{
-		
-	}
-	
-	public Character (String n, double str, double hp, double dex)
-	{
-		name = n;
+		name = "n";
 		strength = 100;
 		healthpoints = 100;
 		dexterity = 100;
 	}
 	
-	
-	public void setName(String n)
+	public void modifyStrength(double str)
 	{
-		String name = n;
+		strength *= str;
 	}
-	public double modifyStrength(double str)
+	public void modifyHealth(double hp)
 	{
-		return strength = str;
+		healthpoints *= hp;
 	}
-	public double modifyHealth(double hp)
+	public void modifyDexterity(double dex)
 	{
-		return healthpoints = hp;
-	}
-	public double modifyDexterity(double dex)
-	{
-		return dexterity = dex;
+		dexterity *= dex;
 	}
 	public double getStrength()
 	{
@@ -69,18 +58,21 @@ public class Character {
 		return names[index];
 	}
 	
-	public int getIndex(String n){
-		int index = Arrays.asList(names).indexOf(n);
-		return index;
-	}
+//	public int getIndex(String n){
+//		int index = Arrays.asList(names).indexOf(n);
+//		return index;
+//	}
 	public static int getLength()
 	{
 		return names.length;
 	}
 
-	public String randomClass(){
+	public int randomIndexforClass(){
 		int number = (int) (Math.random() * classes.length);
-		return classes[number];
+		return number;
+	}
+	public String randomClass(int index){
+		return classes[index];
 	}
 	
 
