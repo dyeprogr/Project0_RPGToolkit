@@ -10,7 +10,8 @@ public class test {
 		
 		Weapon weapon = new Weapon();
 		
-		// commented out to have cleaner console output
+		
+		// Section1 - Dice
 		
 		int roll1 = dice1.roll();
 		int roll2 = dice2.roll();
@@ -20,62 +21,30 @@ public class test {
 		
 		System.out.printf("Rolled 3 dice - %s, %s and %s. Total sum of %s.",roll1,roll2,roll3,sum);
 		System.out.println();
+
 		System.out.println("---------------------------------------------");
-		//*/
 		
-		//characters stuff
 		
-		int characterindex = character.randomIndexOfCharacter();
-		String gender = "";
-		int classindex = character.randomIndexforClass();
-		String charclass = character.randomClass(classindex);
+		// Section2 - Character
 		
-		gender = (characterindex <= (Character.getLength()/2) -1) ? "male" : "female";
+		character.setRandomNameAndClass();
+		character.modifyStatsByGenderAndClass();
 		
-		System.out.println(character.randomCharacter(characterindex) + " - a " + gender + " " + charclass);
+		System.out.println(character.getName() + " - a " + character.getGender() + " " + character.getCharClass());
 		
-		//stats modified by gender and class
-		if (gender == "male"){
-			character.modifyStrength(1.2);
-			character.modifyHealth(1.5);
-			character.modifyDexterity(.8);
-		} else { 
-			character.modifyStrength(.8);
-			character.modifyDexterity(1.4);
-		}
-		
-		if (charclass == "warrior"){
-			character.modifyStrength(1.5);
-			character.modifyHealth(1.5);
-		} else if (charclass == "berserk"){
-			character.modifyStrength(2);
-		} else if (charclass == "rogue"){
-			character.modifyHealth(2);
-		} else if (charclass == "archer"){
-			character.modifyHealth(.7);
-			character.modifyStrength(.5);
-			character.modifyDexterity(2);
-		} else if (charclass == "druid"){
-			character.modifyHealth(4);
-			character.modifyStrength(.2);
-			character.modifyDexterity(.5);
-		}
-		  
 		System.out.println("Strength: \t" + character.getStrength());
 		System.out.println("Health: \t" + character.getHealthpoints());
 		System.out.println("Dexterity: \t" + character.getDexterity());
 		
-		
-		
-		
 		System.out.println("---------------------------------------------");
 		
 		
-		weapon.setRandomWeaponType(weapon.randomIndexOfType());
+		// Section3 - Weapon
+		
+		weapon.setRandomWeaponType();
 		System.out.println(weapon.getName() + " " + weapon.getType());
 		
-		weapon.randomWeaponDamage();
-		System.out.println("Damage: " + weapon.randomWeaponDamage());
+		System.out.println("Damage: \t" + weapon.setRandomWeaponDamage());
 	}
 	
 }

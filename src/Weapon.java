@@ -12,7 +12,7 @@ public class Weapon {
 	
 	private String[] weaponType = new String[]{"sword", "mace", "gun", "spear", "wand", "bow", "axe"};
 	
-	//expendable lists of names
+	//easily expendable lists of names
 	private String[] swordName = new String[]{"Excalibur", "Carsomyr", "Szczerbiec", "Silver"};
 	private String[] maceName = new String[]{"Skullcrasher", "Stupefier", "Mauler"};
 	private String[] gunName = new String[]{"Glock", "Magnum", "AK47"};
@@ -29,15 +29,31 @@ public class Weapon {
 		equipable = "";
 	}
 	
+
 	
-	
-	public int randomIndexOfType(){
-		int number = (int) (Math.random() * weaponType.length);
-		return number;
+	public String getType(){
+		return type;
 	}
-	public void setRandomWeaponType(int index){
-		type = weaponType[index];
-		
+	public String getName(){
+		this.setRandomWeaponName();
+		return name;
+	}
+	public int getDamage(){
+		return damage * setRandomWeaponDamage();
+	}
+
+	//ugly way to get damage in range between 50 and 100
+	public int setRandomWeaponDamage(){
+		int modifier = 0;
+		do{
+		modifier = (int) (Math.random() * damage);
+        } while (modifier <= 50);
+		return modifier;
+	}
+	
+	public void setRandomWeaponType(){
+		int number = (int) (Math.random() * weaponType.length);
+		type = weaponType[number];
 	}
 	
 
@@ -69,58 +85,9 @@ public class Weapon {
 	}
 	
 
-	public String getType(){
-		return type;
-	}
-	
-	public String getName(){
-		this.setRandomWeaponName();
-		return name;
-	}
-	
 
 	
-//	System.out.println(weapon.setRandomWeaponType(weapon.randomIndexOfType()));
-//
-//	
-//	weapon.setRandomWeaponName();
-//	System.out.println(weapon.getName());
-	
-//		public int randomIndexOfCharacter(){
-//			int number = (int) (Math.random() * names.length);
-//			return number;
-//		}
-//		public String randomCharacter(int index){
-//			return names[index];
-//		}
-		
-		
-		
-		
-	
-	
-//	public int randomIndexOfWeaponName(String which){
-//		
-//		int number = (int) (Math.random() * which.length());
-//		return number;
-//	}
-	
-	
-	
-	
-	
-	//ugly way to get damage in range between 50 and 100
-	public int randomWeaponDamage(){
-		int modifier = 0;
-		do{
-		modifier = (int) (Math.random() * damage);
-        } while (modifier <= 50);
-		return modifier;
-	}
-	
-	public int getDamage(){
-		return damage * randomWeaponDamage();
-	}
+
 	
 	
 	
