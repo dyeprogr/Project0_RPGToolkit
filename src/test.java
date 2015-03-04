@@ -45,6 +45,8 @@ public class test {
 		System.out.println(weapon.getName() + " " + weapon.getType());
 		
 		System.out.println("Damage: \t" + weapon.setRandomWeaponDamage());
+		System.out.println(weapon.getDesctiption());
+		System.out.println(weapon.getEquipableInfo());
 	}
 	
 }
