@@ -8,6 +8,8 @@ public class test {
 		
 		Character character = new Character();
 		
+		Weapon weapon = new Weapon();
+		
 		// commented out to have cleaner console output
 		
 		int roll1 = dice1.roll();
@@ -62,6 +64,18 @@ public class test {
 		System.out.println("Strength: \t" + character.getStrength());
 		System.out.println("Health: \t" + character.getHealthpoints());
 		System.out.println("Dexterity: \t" + character.getDexterity());
+		
+		
+		
+		
+		System.out.println("---------------------------------------------");
+		
+		
+		weapon.setRandomWeaponType(weapon.randomIndexOfType());
+		System.out.println(weapon.getName() + " " + weapon.getType());
+		
+		weapon.randomWeaponDamage();
+		System.out.println("Damage: " + weapon.randomWeaponDamage());
 	}
 	
 }

@@ -14,6 +14,7 @@ public class Character {
 	
 	//first half of an array - male names, second half - female, it's ok to add more names as long as it's even
 	static String[] names = new String[] {"Arthur", "Edward", "Greg", "Wilhelm", "Kate", "Sophia", "Helga", "Mona"};
+
 	private String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
 	
 	public Character ()
