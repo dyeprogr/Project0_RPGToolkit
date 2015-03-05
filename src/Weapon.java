@@ -1,24 +1,27 @@
 
 public class Weapon {
 
-	private String type;
-	private String name;
-	public int damage;
-	private String description;
-	private String equipable;
+	
+	
+	
+	private static String type;
+	private static String name;
+	public static int damage;
+	private static String description;
+	private static String equipable;
 	
 
 	
-	private String[] weaponType = new String[]{"sword", "mace", "gun", "spear", "wand", "bow", "axe"};
+	private static String[] weaponType = new String[]{"sword", "mace", "gun", "spear", "wand", "bow", "axe"};
 	
 	//easily expendable lists of names
-	private String[] swordName = new String[]{"Excalibur", "Carsomyr", "Szczerbiec", "Silver"};
-	private String[] maceName = new String[]{"Skullcrasher", "Stupefier", "Mauler"};
-	private String[] gunName = new String[]{"Glock", "Magnum", "AK47"};
-	private String[] spearName = new String[]{"Blackbiter", "Ixil", "Toothpick"};
-	private String[] wandName = new String[]{"HarryPotter's", "Gandalf's", "BlackMagic"};
-	private String[] bowName = new String[]{"Tulgan", "Indian", "Mongolian"};
-	private String[] axeName = new String[]{"Azuredge", "Stonefire", "Mauletar"};
+	private static String[] swordName = new String[]{"Excalibur", "Carsomyr", "Szczerbiec", "Silver"};
+	private static String[] maceName = new String[]{"Skullcrasher", "Stupefier", "Mauler"};
+	private static String[] gunName = new String[]{"Glock", "Magnum", "AK47"};
+	private static String[] spearName = new String[]{"Blackbiter", "Ixil", "Toothpick"};
+	private static String[] wandName = new String[]{"HarryPotter's", "Gandalf's", "BlackMagic"};
+	private static String[] bowName = new String[]{"Tulgan", "Indian", "Mongolian"};
+	private static String[] axeName = new String[]{"Azuredge", "Stonefire", "Mauletar"};
 	
 	public Weapon ()
 	{
@@ -31,40 +34,49 @@ public class Weapon {
 	
 
 	
-	public String getType(){
+	public static String getType(){
 		return type;
 	}
 	public String getName(){
 		this.setRandomWeaponNameAndInfo();
 		return name;
 	}
-	public int getDamage(){
-		return damage * setRandomWeaponDamage();
+	public static String getNameAndType(){
+		Weapon weapon = new Weapon();
+		setRandomWeaponType();
+		setRandomWeaponNameAndInfo();
+		
+		String nameAndType = name + " " + type;
+		return nameAndType;
 	}
-	public String getEquipableInfo(){
+	public static int getDamage(){
+		setRandomWeaponDamage();
+		return damage;
+	}
+	public static String getEquipableInfo(){
 		return equipable;
 	}
-	public String getDesctiption(){
+	public static String getDescription(){
 		return description;
 	}
 
 	//ugly way to get damage in range between 50 and 100
-	public int setRandomWeaponDamage(){
-		int modifier = 0;
+	public static void setRandomWeaponDamage(){
+		int damageModifier = 0;
 		do{
-		modifier = (int) (Math.random() * damage);
-        } while (modifier <= 50);
-		return modifier;
+		damageModifier = (int) (Math.random() * damage);
+        } while (damageModifier <= 50);
+		damage = damageModifier;
 	}
 	
-	public void setRandomWeaponType(){
+	public static void setRandomWeaponType(){
 		int number = (int) (Math.random() * weaponType.length);
 		type = weaponType[number];
 	}
 	
 	//private String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
 
-	private void setRandomWeaponNameAndInfo(){
+	private static void setRandomWeaponNameAndInfo(){
 		if (type == "sword"){
 			int index = (int) (Math.random() * swordName.length);
 			name = swordName[index];

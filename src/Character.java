@@ -1,20 +1,29 @@
 
 public class Character {
 	
-	private String name;
-	private String gender;
-	private String charclass;
-	private int strength;
-	private int health;
-	private int dexterity;
 	
-	private int nameindex;
-	private int classindex;
+	
+	private static String name;
+	private static String gender;
+	private static String charclass;
+	private static int strength;
+	private static int health;
+	private static int dexterity;
+	
+	private static int nameindex;
+	private static int classindex;
 	
 	//first half of an array - male names, second half - female, it's ok to add more names as long as it's even
 	static String[] names = new String[] {"Arthur", "Edward", "Greg", "Wilhelm", "Kate", "Sophia", "Helga", "Mona"};
 
-	private String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
+	private static String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
+	
+	
+	//character.setRandomNameAndClass();
+	//character.modifyStatsByGenderAndClass();
+	
+	
+	
 	
 	public Character ()
 	{
@@ -26,31 +35,41 @@ public class Character {
 		dexterity = 100;
 	}
 	
-	public String getName(){
+	public static String getName(){
 		return name;
 	}
-	public String getGender(){
+	public static String getGender(){
 		return gender;
 	}
-	public String getCharClass(){
+	public static String getCharClass(){
 		return charclass;
 	}
 
-	public int getStrength()
+	public static int getStrength()
 	{
 		return strength;
 	}
-	public int getHealthpoints()
+	public static int getHealthpoints()
 	{
 		return health;
 	}
-	public int getDexterity()
+	public static int getDexterity()
 	{
 		return dexterity;
 	}
 	
-  
-  	public void setRandomNameAndClass(){
+	
+	
+	public static String getNameGenderAndClass(){
+		setRandomNameAndClass();
+		modifyStatsByGenderAndClass();
+		String nameGenderAndClass = (getName() + " - a " + getGender() + " " + getCharClass()); 
+		return nameGenderAndClass;
+	}
+	
+  	public static void setRandomNameAndClass(){
+  		Character character = new Character();
+  		
   		nameindex = (int) (Math.random() * names.length);
 		classindex = (int) (Math.random() * classes.length);
 		
@@ -59,10 +78,9 @@ public class Character {
 		
 		gender = (nameindex <= (names.length/2) -1) ? "male" : "female";
 	}
-	
 
 	//stats modified by gender and class
-  	public void modifyStatsByGenderAndClass(){
+  	public static void modifyStatsByGenderAndClass(){
   	
   		if (gender == "male"){
   			strength *= 1.2;
