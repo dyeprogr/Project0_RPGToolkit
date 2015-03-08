@@ -1,7 +1,6 @@
+package rpgToolKit;
 
 public class Character {
-	
-	
 	
 	private static String name;
 	private static String gender;
@@ -9,21 +8,15 @@ public class Character {
 	private static int strength;
 	private static int health;
 	private static int dexterity;
+	private static String imageName;
 	
 	private static int nameindex;
 	private static int classindex;
 	
 	//first half of an array - male names, second half - female, it's ok to add more names as long as it's even
-	static String[] names = new String[] {"Arthur", "Edward", "Greg", "Wilhelm", "Kate", "Sophia", "Helga", "Mona"};
+	static String[] names = new String[] {"Arthur", "Edward", "Greg", "Wilhelm", "Kasimir", "Kate", "Sophia", "Helga", "Mona", "Julia"};
 
 	private static String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
-	
-	
-	//character.setRandomNameAndClass();
-	//character.modifyStatsByGenderAndClass();
-	
-	
-	
 	
 	public Character ()
 	{
@@ -33,6 +26,7 @@ public class Character {
 		strength = 100;
 		health = 100;
 		dexterity = 100;
+		imageName = "";
 	}
 	
 	public static String getName(){
@@ -57,9 +51,10 @@ public class Character {
 	{
 		return dexterity;
 	}
-	
-	
-	
+	public static String getImageName(){
+		return imageName;
+	}
+
 	public static String getNameGenderAndClass(){
 		setRandomNameAndClass();
 		modifyStatsByGenderAndClass();
@@ -68,7 +63,7 @@ public class Character {
 	}
 	
   	public static void setRandomNameAndClass(){
-  		Character character = new Character();
+  		new Character();
   		
   		nameindex = (int) (Math.random() * names.length);
 		classindex = (int) (Math.random() * classes.length);
@@ -77,6 +72,14 @@ public class Character {
 		charclass = classes[classindex];
 		
 		gender = (nameindex <= (names.length/2) -1) ? "male" : "female";
+		
+		//for image filename
+		int characterIndex = (int) (Math.random() * names.length/2 + 1);
+		if (gender == "male"){
+			imageName = "ch" + "1" + characterIndex + ".png";
+		} else {
+			imageName = "ch" + "2" + characterIndex + ".png";
+		}
 	}
 
 	//stats modified by gender and class
@@ -108,5 +111,4 @@ public class Character {
   			dexterity *= .5;
   		}
   	}
-
 }

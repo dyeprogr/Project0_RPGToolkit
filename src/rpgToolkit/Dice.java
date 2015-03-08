@@ -1,6 +1,6 @@
+package rpgToolKit;
 
 public class Dice{
-	
 	
 	static Dice die1 = new Dice();
 	static Dice die2 = new Dice();
@@ -9,9 +9,12 @@ public class Dice{
 	public int sides;
 	public int result;
 	
+	public static String imageName;
+	
 	public Dice(){
 			sides = 6;
 			result = 0;
+			imageName = "";
 	}
 	
 	public Dice(int sides){
@@ -39,5 +42,4 @@ public class Dice{
 		int sum = die1.result + die2.result + die3.result; 
 		return sum;
 	}
-	
 }

@@ -1,21 +1,18 @@
+package rpgToolKit;
 
 public class Weapon {
 
-	
-	
-	
 	private static String type;
 	private static String name;
 	public static int damage;
 	private static String description;
 	private static String equipable;
-	
-
+	private static String imageName;
 	
 	private static String[] weaponType = new String[]{"sword", "mace", "gun", "spear", "wand", "bow", "axe"};
 	
 	//easily expendable lists of names
-	private static String[] swordName = new String[]{"Excalibur", "Carsomyr", "Szczerbiec", "Silver"};
+	private static String[] swordName = new String[]{"Excalibur", "Carsomyr", "Szczerbiec"};
 	private static String[] maceName = new String[]{"Skullcrasher", "Stupefier", "Mauler"};
 	private static String[] gunName = new String[]{"Glock", "Magnum", "AK47"};
 	private static String[] spearName = new String[]{"Blackbiter", "Ixil", "Toothpick"};
@@ -30,19 +27,18 @@ public class Weapon {
 		damage = 100;
 		equipable = "";
 		description = "";
+		imageName = "";
 	}
-	
-
 	
 	public static String getType(){
 		return type;
 	}
 	public String getName(){
-		this.setRandomWeaponNameAndInfo();
+		Weapon.setRandomWeaponNameAndInfo();
 		return name;
 	}
 	public static String getNameAndType(){
-		Weapon weapon = new Weapon();
+		new Weapon();
 		setRandomWeaponType();
 		setRandomWeaponNameAndInfo();
 		
@@ -59,6 +55,9 @@ public class Weapon {
 	public static String getDescription(){
 		return description;
 	}
+	public static String getImageName(){
+		return imageName;
+	}
 
 	//ugly way to get damage in range between 50 and 100
 	public static void setRandomWeaponDamage(){
@@ -74,8 +73,6 @@ public class Weapon {
 		type = weaponType[number];
 	}
 	
-	//private String[] classes = new String[] {"warrior", "berserk", "rogue", "archer", "druid"};
-
 	private static void setRandomWeaponNameAndInfo(){
 		if (type == "sword"){
 			int index = (int) (Math.random() * swordName.length);
@@ -114,6 +111,70 @@ public class Weapon {
 			equipable = "Not equipable by Archer and Druid";
 		}
 		
+		//for image filename
+		if (type.equals("sword")){
+			imageName = "sword";
+			if (name.equals("Excalibur")){
+				imageName = imageName + "1" + ".png";
+			} else if (name.equals("Carsomyr")){
+				imageName = imageName + "2" + ".png";
+			} else if (name.equals("Szczerbiec")){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type.equals("mace")) {
+			imageName = "mace";
+			if (name.equals("Skullcrasher")){
+				imageName = imageName + "1" + ".png";				
+			} else if (name.equals("Stupefier")){
+				imageName = imageName + "2" + ".png";
+			} else if (name.equals("Mauler")){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type.equals("gun")) {
+			imageName = "gun";
+			if (name.equals("Glock")){
+				imageName = imageName + "1" + ".png";				
+			} else if (name.equals("Magnum")){
+				imageName = imageName + "2" + ".png";
+			} else if (name.equals("AK47")){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type == "spear") {
+			imageName = "spear";
+			if (name == "Blackbiter"){
+				imageName = imageName + "1" + ".png";				
+			} else if (name == "Ixil"){
+				imageName = imageName + "2" + ".png";
+			} else if (name == "Toothpick"){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type == "wand") {
+			imageName = "wand";
+			if (name == "HarryPotter's"){
+				imageName = imageName + "1" + ".png";				
+			} else if (name == "Gandalf's"){
+				imageName = imageName + "2" + ".png";
+			} else if (name == "BlackMagic"){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type == "bow") {
+			imageName = "bow";
+			if (name == "Tulgan"){
+				imageName = imageName + "1" + ".png";				
+			} else if (name == "Indian"){
+				imageName = imageName + "2" + ".png";
+			} else if (name == "Mongolian"){
+				imageName = imageName + "3" + ".png";
+			}
+		} else if (type == "axe") {
+			imageName = "axe";
+			if (name == "Azuredge"){
+				imageName = imageName + "1" + ".png";				
+			} else if (name == "Stonefire"){
+				imageName = imageName + "2" + ".png";
+			} else if (name == "Mauletar"){
+				imageName = imageName + "3" + ".png";
+			}
+		}
 	}
-	
 }
